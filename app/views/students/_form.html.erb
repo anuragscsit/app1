@@ -1,0 +1,47 @@
+<div class="container">
+	<%= form_for @student do |f| %>
+		<% if @student.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@student.errors.count, "error") %> prohibited
+	        this student from being saved:
+	      </h2>
+	      <ul>
+	        <% @student.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+		<p>
+	    <%= f.label :member_id %><br>
+	    <%= f.text_field :member_id %>
+	  </p>
+	  <p>
+	    <%= f.label :Enrollment_number %><br>
+	    <%= f.text_field :enrollment_no %>
+	  </p>
+	  <p>
+	    <%= f.label :name %><br>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label :contact %><br>
+	    <%= f.text_field :contact %>
+	  </p>
+	  <p>
+	    <%= f.label :adderss %><br>
+	    <%= f.text_area :adderss %>
+	  </p>
+	  <p>
+	    <%= f.label :section_id %><br>
+	    <%= f.select :section_id, options_for_select(Section.all.collect {|p| [ p.name, p.id ] }, f.object.try(:section_id)), {include_blank: 'None'} %>
+	  </p>
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	<% end %>
+</div>
+<script type="text/javascript">
+	$('#student_section_id').select2();
+</script>

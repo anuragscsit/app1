@@ -1,0 +1,5 @@
+<div class="container">
+	<% @course.sections.each do |s| %>
+		<%=  link_to s.name, section_path(s) %><br>
+	<% end %>
+</div>

@@ -1,0 +1,6 @@
+<div class="container">
+	<% @section.students.each do |s| %>
+		<%= link_to s.member_id, student_path(s) %>
+		<%= s.name %><br>
+	<% end %>
+</div>

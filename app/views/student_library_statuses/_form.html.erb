@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="col-lg-12">
+		<%= form_for @student_library_status do |f| %>
+			<% if @student_library_status.errors.any? %>
+		    <div id="error_explanation">
+		      <h2>
+		        <%= pluralize(@student_library_status.errors.count, "error") %> prohibited this student_library_status from being saved:
+		      </h2>
+		      <ul>
+		        <% @student_library_status.errors.full_messages.each do |msg| %>
+		          <li><%= msg %></li>
+		        <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		  <p>
+		    <%= f.label :book_id %><br>
+		    <%= f.select :book_id, options_for_select(Book.all.collect {|p| [ p.enrollment_no, p.id ] }, f.object.try(:book_id)), {include_blank: 'None'} %>
+		  </p>
+			<p>
+		    <%= f.label :issue_date %><br>
+		    <%= f.text_field :issue_date, class: 'datepicker' %>
+		  </p>
+		  <p>
+		    <%= f.label :submission_date %><br>
+		    <%= f.text_field :submission_date, class: 'datepicker' %>
+		  </p>
+		  <p>
+		    <%= f.label :submitted_on %><br>
+		    <%= f.text_field :submitted_on, class: 'datepicker' %>
+		  </p>
+		  <p>
+		    <%= f.label :max_allocation_of_books %><br>
+		    <%= f.text_field :max_allocation_of_books %>
+		  </p>
+		  <p>
+		    <%= f.label :min_allocation_of_books %><br>
+		    <%= f.text_field :min_allocation_of_books %>
+		  </p>
+		  <p>
+		    <%= f.label :returned_before %><br>
+		    <%= f.text_field :returned_before %>
+		  </p>
+		  <p>
+		    <%= f.label :returned_after %><br>
+		    <%= f.text_field :returned_after %>
+		  </p>
+		  <p>
+		    <%= f.label :fine_charge %><br>
+		    <%= f.text_field :fine_charge %>
+		  </p>
+		  <p>
+		    <%= f.label :student_id %><br>
+		    <%= f.select :student_id, options_for_select(Student.all.collect {|p| [ p.enrollment_no, p.id ] }, f.object.try(:student_id)), {include_blank: 'None'} %>
+		  </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	</div>
+</div>
+<script type="text/javascript">
+	$('.datepicker').datepicker();
+	$('#student_library_status_student_id').select2();
+	$('#student_library_status_book_id').select2();
+</script>

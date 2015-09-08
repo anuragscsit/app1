@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue_date: 2015-09-08
+  submission_date: 2015-09-08
+  submitted_on: 2015-09-08
+  book_name: MyString
+  student_id: 
+
+two:
+  issue_date: 2015-09-08
+  submission_date: 2015-09-08
+  submitted_on: 2015-09-08
+  book_name: MyString
+  student_id: 

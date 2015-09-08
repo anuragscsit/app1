@@ -1,0 +1,6 @@
+<div class="container">
+	<% @sections.each do |s| %>
+		<%= link_to s.name, section_path(s) %><br>
+	<% end %>
+	<%= link_to 'New Section', new_section_path, class: 'btn btn-primary' %>
+</div>

@@ -1,0 +1,77 @@
+<div class="container">
+	<div class="col-lg-12">
+		<div class="col-lg-6">
+			<div class="col-sm-12">
+				<div class="col-sm-3">
+					<b>Issue Date:</b>
+				</div>
+				<div class="col-sm-3">
+					<b>Submit Date:</b>
+				</div>
+				<div class="col-sm-3">
+					<b>Submit On:</b>
+				</div>
+				<div class="col-sm-3">
+					<b>Book Name:</b>
+				</div>
+			</div>
+			<div class="col-sm-12"><br>
+				<div style="border: 1px solid;"></div>
+				<% @student.student_library_statuses.each do |sls| %>
+					<div class="col-sm-3">
+						<%= sls.issue_date %>
+					</div>
+					<div class="col-sm-3">
+						<%= sls.submission_date %>
+					</div>
+					<div class="col-sm-3">
+						<%= sls.submitted_on %>
+					</div>
+					<div class="col-sm-3">
+						<%= sls.book.name %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="col-sm-12">
+				<div class="col-sm-2">
+					<b>Max Books:</b>
+				</div>
+				<div class="col-sm-2">
+					<b>Min Books:</b>
+				</div>
+				<div class="col-sm-2">
+					<b>Rteurned Before:</b>
+				</div>
+				<div class="col-sm-2">
+					<b>Rteurned After</b>
+				</div>
+				<div class="col-sm-2">
+					<b>Fine:</b>
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div style="border: 1px solid;"></div>
+				<% @student.student_library_statuses.each do |sls| %>
+					<div class="col-sm-2">
+						<%= sls.max_allocation_of_books %>
+					</div>
+					<div class="col-sm-2">
+						<%= sls.min_allocation_of_books %>
+					</div>
+					<div class="col-sm-2">
+						<%= sls.returned_before %>
+					</div>
+					<div class="col-sm-2">
+						<%= sls.returned_after %>
+					</div>
+					<div class="col-sm-2">
+						<%= sls.fine_charge %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<%= link_to "Back", section_path(@student.section_id), class: 'btn btn-primary ' %>
+</div>
