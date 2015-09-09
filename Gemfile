@@ -50,3 +50,5 @@ gem 'ckeditor_rails'
 gem 'bootstrap-datepicker-rails'
 gem 'select2-rails'
 gem 'rails_admin'
+gem "rmagick"
+gem "carrierwave"

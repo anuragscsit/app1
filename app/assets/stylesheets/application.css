@@ -16,3 +16,9 @@
  *= require bootstrap-datepicker3
  *= require_self
  */
+ .profile_image {
+  width :200px !important;
+  height :150px !important;
+  display :block !important;
+}
+

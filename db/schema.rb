@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908134319) do
+ActiveRecord::Schema.define(version: 20150909065951) do
+
+  create_table "batches", force: :cascade do |t|
+    t.string   "year"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "batches", ["course_id"], name: "index_batches_on_course_id"
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150908134319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "course_id"
+    t.integer  "batch_id"
   end
 
   create_table "student_library_statuses", force: :cascade do |t|
@@ -70,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150908134319) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "section_id"
+    t.string   "image"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -84,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150908134319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"
+    t.string   "image"
   end
 
 end
