@@ -16,4 +16,5 @@
 //= require select2
 //= require ckeditor-jquery
 //= require bootstrap-datepicker
+//= require dataTables/jquery.dataTables
 //= require_tree .

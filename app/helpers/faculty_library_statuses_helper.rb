@@ -1,0 +1,2 @@
+module FacultyLibraryStatusesHelper
+end

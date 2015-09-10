@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909065951) do
+ActiveRecord::Schema.define(version: 20150910151045) do
 
   create_table "batches", force: :cascade do |t|
     t.string   "year"
@@ -26,11 +26,17 @@ ActiveRecord::Schema.define(version: 20150909065951) do
     t.string   "name"
     t.string   "author"
     t.string   "isbn"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "total"
     t.integer  "available"
     t.integer  "issued"
+    t.integer  "student_library_status_id"
+  end
+
+  create_table "books_student_library_statuses", force: :cascade do |t|
+    t.integer "student_library_status_id"
+    t.integer "book_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -39,11 +45,49 @@ ActiveRecord::Schema.define(version: 20150909065951) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "faculties", force: :cascade do |t|
+    t.string   "name"
+    t.string   "employee_id"
+    t.string   "email"
+    t.string   "contact_1"
+    t.string   "contact_2"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "faculty_library_statuses", force: :cascade do |t|
+    t.string   "issue_date"
+    t.string   "submission_date"
+    t.string   "submitted_on"
+    t.integer  "faculty_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "book_id"
+  end
+
+  add_index "faculty_library_statuses", ["faculty_id"], name: "index_faculty_library_statuses_on_faculty_id"
+
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+  end
+
+  create_table "mail_to_members", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "library_member_id"
+    t.string   "library_member_type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "sections", force: :cascade do |t|
@@ -81,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150909065951) do
     t.datetime "updated_at",    null: false
     t.integer  "section_id"
     t.string   "image"
+    t.string   "email"
   end
 
   create_table "user_groups", force: :cascade do |t|

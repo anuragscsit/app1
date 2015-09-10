@@ -1,57 +1,73 @@
 <div class="container">
 	<div class="col-lg-12">
-		<div class="col-sm-2">
-			<%= image_tag @student.image_url %>
+		<div class="col-lg-1 side-bar">
 		</div>
-		<div class="col-sm-9">
-			<strong>Name: </strong><%= @student.name%><br>
-			<strong>Contact: </strong><%= @student.contact%><br>
-			<strong>Address: </strong><%= @student.adderss%><br>
-			<strong>Class: </strong><%= @student.section.name%>
-		</div>
-		<div class="col-sm-12">
+		<div class="col-lg-11">
+			<center>
+				<h3>Library Status of <strong><%= @student.name %></strong></h3>
+			</center><br>
 			<div class="col-sm-2">
-				<b>Issue Date:</b>
+				<%= image_tag @student.image_url %>
 			</div>
-			<div class="col-sm-2">
-				<b>Submit Date:</b>
+			<div class="col-sm-5">
+				<strong>Name: </strong><%= @student.name%><br>
+				<strong>Contact: </strong><%= @student.contact%><br>
+				<strong>Address: </strong><%= @student.adderss%><br>
+				<strong>Class: </strong><%= @student.section.name%>
 			</div>
-			<div class="col-sm-2">
-				<b>Submit On:</b>
+			<div class="col-sm-5">
+				<strong>Email: </strong><%= @student.email%><br>
+				<strong>Member Id: </strong><%= @student.member_id%>
 			</div>
-			<div class="col-sm-4">
-				<b>Book Name:</b>
-			</div>
-			<div class="col-sm-1">
-				<b>Rteurned After:</b>
-			</div>
-			<div class="col-sm-1">
-				<b>Fine</b>
-			</div>
-		</div>
-		<div class="col-sm-12">
-			<div style="border: 1px solid;"></div>
-			<% @student.student_library_statuses.each do |sls| %>
+			<div class="col-sm-12">
 				<div class="col-sm-2">
-					<%= sls.issue_date %>
+					<b>Issue Date:</b>
 				</div>
 				<div class="col-sm-2">
-					<%= sls.submission_date %>
+					<b>Submit Date:</b>
 				</div>
 				<div class="col-sm-2">
-					<%= sls.submitted_on %>
+					<b>Submit On:</b>
 				</div>
 				<div class="col-sm-4">
-					<%= sls.book.name %>
+					<b>Book Name:</b>
 				</div>
 				<div class="col-sm-1">
-					<%= sls.returned_after %>
+					<b>Rteurned After:</b>
 				</div>
 				<div class="col-sm-1">
-					Rs. <%= sls.fine_charge %>
-				</div><br>
-			<% end %>
+					<b>Fine</b>
+				</div>
+			</div>
+			<div class="col-sm-12">
+			<div style="border: 1px solid;"></div>
+				<% @student.student_library_statuses.each do |sls| %>
+					<div class="col-sm-2">
+						<%= sls.issue_date %>
+					</div>
+					<div class="col-sm-2">
+						<%= sls.submission_date %>
+					</div>
+					<div class="col-sm-2">
+						<%= sls.submitted_on %>
+					</div>
+					<div class="col-sm-4">
+						<%= sls.book.name %>
+					</div>
+					<div class="col-sm-1">
+						<%= sls.returned_after %>
+					</div>
+					<div class="col-sm-1">
+						Rs. <%= sls.fine_charge %>
+					</div><br>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-11">
+			<%= link_to "Back", section_path(@student.section_id), class: 'btn btn-primary ' %>
+			</div>
 		</div>
 	</div>
-	<%= link_to "Back", section_path(@student.section_id), class: 'btn btn-primary ' %>
 </div>

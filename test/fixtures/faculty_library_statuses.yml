@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue_date: MyString
+  submission_date: MyString
+  submitted_on: MyString
+  faculty_id: 
+
+two:
+  issue_date: MyString
+  submission_date: MyString
+  submitted_on: MyString
+  faculty_id: 

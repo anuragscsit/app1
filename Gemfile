@@ -52,3 +52,4 @@ gem 'select2-rails'
 gem 'rails_admin'
 gem "rmagick"
 gem "carrierwave"
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'

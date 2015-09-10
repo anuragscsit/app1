@@ -19,6 +19,7 @@ class StudentsController < ApplicationController
 	def create
 		@student = Student.new(student_params)
 		if @student.save
+			StudentMailer.welcome_email(@student).deliver_now
 			redirect_to students_path
 		else
 			render 'new'
