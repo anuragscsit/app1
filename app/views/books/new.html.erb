@@ -1,0 +1,43 @@
+<div class="container">
+  <% if !@book.errors.empty? %>
+    <div class="alert alert-error">
+      <ul>
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="well">
+    <%= form_for @book, html: { multipart: true } do |f| %>
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <div class="col-md-2">
+            <%= f.label :name %>
+          </div>
+          <div class="col-md-4">
+            <%= f.text_field :name %>
+          </div>
+        </div><br>
+        <div class="col-md-6">
+          <div class="col-md-2">
+            <%= f.label :image %>
+          </div>
+          <div class="col-md-4">
+            <%= f.file_field :image %>
+          </div>
+        </div><br>
+        <div class="col-md-6">
+          <div class="col-md-2">
+            <%= f.label :file %>
+          </div>
+          <div class="col-md-4">
+            <%= f.file_field :attachment %>
+          </div>
+        </div>
+          <%= f.submit "Save", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

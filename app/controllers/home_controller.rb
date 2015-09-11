@@ -17,6 +17,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def user_varification
+    @user = User.new
+  end
+
   private
 
   def member_library_status_params

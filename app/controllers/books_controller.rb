@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
 
+	before_action :authenticate_user!, :except => [:index, :new]
+
 	def index
 		@books = Book.all
 	end
@@ -19,7 +21,7 @@ class BooksController < ApplicationController
 	def create
 		@book = Book.new(book_params)
 		if @book.save
-			redirect_to books_path
+			redirect_to books_path, notice: "#{@book.name} has been uploaded."
 		else 
 			render 'new'
 		end
@@ -37,13 +39,13 @@ class BooksController < ApplicationController
 	def destroy
 		@book = Book.find(params[:id])
 		@book.destroy
-		redirect_to books_path
+		redirect_to books_path, notice: "#{@book.name} has been deleted."
 	end
 
 	private
 
 		def book_params
-			params.require(:book).permit(:name, :author, :isbn, )
+			params.require(:book).permit(:name, :author, :isbn, :image, :attachment)
 		end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910151045) do
+ActiveRecord::Schema.define(version: 20150911103649) do
 
   create_table "batches", force: :cascade do |t|
     t.string   "year"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20150910151045) do
     t.integer  "available"
     t.integer  "issued"
     t.integer  "student_library_status_id"
+    t.string   "attachment"
+    t.string   "image"
   end
 
   create_table "books_student_library_statuses", force: :cascade do |t|
@@ -74,6 +76,14 @@ ActiveRecord::Schema.define(version: 20150910151045) do
     t.integer  "user_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "mail_to_members", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -88,6 +98,13 @@ ActiveRecord::Schema.define(version: 20150910151045) do
     t.string   "library_member_type"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "resumes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sections", force: :cascade do |t|
@@ -137,10 +154,23 @@ ActiveRecord::Schema.define(version: 20150910151045) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "group_id"
     t.string   "image"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

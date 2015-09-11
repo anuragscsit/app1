@@ -53,3 +53,5 @@ gem 'rails_admin'
 gem "rmagick"
 gem "carrierwave"
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'bootstrap-sass', '~> 2.3.2'
+gem 'devise'
