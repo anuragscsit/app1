@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :mail_to_members
   resources :books, only: [:index, :new, :create, :destroy]
   resources :resumes, only: [:index, :new, :create, :destroy]
-  root "books#index"
+  root "home#index"
 end
